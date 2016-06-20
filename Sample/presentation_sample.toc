@@ -1,0 +1,7 @@
+\beamer@endinputifotherversion {3.33pt}
+\beamer@sectionintoc {1}{Preliminary}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Trusses}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Triangle connected k-truss}{4}{0}{1}
+\beamer@subsectionintoc {1}{3}{K-truss community}{5}{0}{1}
+\beamer@subsectionintoc {1}{4}{Finding k-truss communities}{6}{0}{1}
+\beamer@sectionintoc {2}{Spatial Constraints}{7}{0}{2}
