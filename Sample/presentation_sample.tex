@@ -78,12 +78,12 @@
 
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
-
+\usepackage{epstopdf}
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[ssc]{Spatial Social Community} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[S.S.C]{Spatial Social Community} % The short title appears at the bottom of every slide, the full title is only on the title page
 
 \author{Lu Chen} % Your name
 \institute[FSET] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
@@ -131,8 +131,6 @@ A k-truss is a none-trivial, one-component subgraph such that each edge is reinf
 \item Triangle adjacency: given two triangles, they are adjacent if and they share a common edge
 \item Triangle connectivity: given any two triangles $\bigtriangleup_{s}$ and $\bigtriangleup_{t}$ in G, they are connected if there exist a series of triangles $\bigtriangleup_{1},...,\bigtriangleup_{n}$ in G, where n $ge$ 2, such that, $\bigtriangleup_{1} = \bigtriangleup_{s}$, $\bigtriangleup_{n}=\bigtriangleup_{t}$ and for $1\le i< n $, $\bigtriangleup_{i}$ and $\bigtriangleup_{i+1}$ are adjacent 
 \end{itemize}
-
-
 \end{frame}
 
 %------------------------------------------------
@@ -161,7 +159,8 @@ Better
 \frametitle{Finding k-truss communities}
 \begin{itemize}
 \item Observation: Given a $k$, a edge $e$ in $G=(V,E)$ can only be contained by at most one k-truss community
-\item Finding k-truss communities: For each unvisited edge $e$ with trussness no less than $k$ in $G=(V,E)$, we run BFS from it.
+\item Finding k-truss communities: For each unvisited edge $e$ with trussness no less than $k$ in $G=(V,E)$, we run BFS from it and during the BFS includes any edge that is unvisited and has trussness no less than $k$.
+\item \includegraphics[width=5cm]{trusssample.jpg}
 \end{itemize}
 \end{frame}
 
@@ -171,41 +170,50 @@ Better
 
 \subsection{An example}
 \begin{frame}
+	\includegraphics[width=10cm]{sg.eps}
 \end{frame}
 
 \subsection{Basic solution}
 \begin{frame}
 \begin{itemize}
-\item Observation: A spatial constrained k-truss community must be contained by a k-truss community or equal to a k-truss community 
+\item Observation: A spatial constrained k-truss community must be contained in a corresponding k-truss community or equal to a corresponding k-truss community 
 \item Based on the observation, in the following part, the discussion focuses on finding spatial constrained k-truss communities in a k-truss community.
-\item A k-truss community may contain a set of two-vertexes-pairs. Any pair of vertexes in the set, the distance of the two vertexes is larger than d.
-\item Observation: for each pair of vertexes, we only need to remove one of the vertex (different removal choices induce different combinations)
-\item Observation: For the set of pairs of vertexes, the processing order of pairs of vertexes does not affect the result but affects the performance
-\item Observation: After dealing with all pairs of vertexes whose distances are larger than d, the remaining of k-truss community is subgraph of the k-truss community (could be disconnected).
-K-truss communities in the remaining subgraph are spatial constrained k-truss communities if they exist.
+\item \includegraphics[width=5cm]{trusssample.jpg}
 \end{itemize}
 \end{frame}
 
-\subsection{Example}
 \begin{frame}
-
+\begin{itemize}
+\item A k-truss community may contain a set of two-vertexes-pairs. Any pair of vertexes in the set, the distance of the two vertexes is larger than d.
+\item Observation: for each pair of vertexes, we only need to remove one of the vertex (different removal choices induce different combinations, which may lead to different results)
+\item Observation: For the set of pairs of vertexes, the processing order of pairs of vertexes does not affect the result but affects the performance
+\item Observation: After dealing with all pairs of vertexes whose distances are larger than d, the residue of a k-truss community is subgraph of the k-truss community (connected or disconnected).
+K-truss communities in the residue are spatial constrained k-truss communities if they exist.
+\item \includegraphics[width=5cm]{subgraph.eps}
+\end{itemize}
 \end{frame}
 
+\subsection{Algorithm Example}
 \begin{frame}
-\frametitle{Table}
-\begin{table}
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\caption{Table caption}
-\end{table}
+\frametitle{Algorithm Example}
+	\includegraphics[width=10cm]{re.eps}
 \end{frame}
+
+%\begin{frame}
+%\frametitle{Table}
+%\begin{table}
+%\begin{tabular}{l l l}
+%\toprule
+%\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
+%\midrule
+%Treatment 1 & 0.0003262 & 0.562 \\
+%Treatment 2 & 0.0015681 & 0.910 \\
+%Treatment 3 & 0.0009271 & 0.296 \\
+%\bottomrule
+%\end{tabular}
+%\caption{Table caption}
+%\end{table}
+%\end{frame}
 
 %------------------------------------------------
 
