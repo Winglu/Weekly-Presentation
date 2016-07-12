@@ -170,11 +170,13 @@ Better
 
 \subsection{An example}
 \begin{frame}
-	\includegraphics[width=10cm]{sg.eps}
+\frametitle{Sample graph}	
+	\includegraphics[width=9cm]{sg.eps}
 \end{frame}
 
 \subsection{Basic solution}
 \begin{frame}
+\frametitle{Basic solution}
 \begin{itemize}
 \item Observation: A spatial constrained k-truss community must be contained in a corresponding k-truss community or equal to a corresponding k-truss community 
 \item Based on the observation, in the following part, the discussion focuses on finding spatial constrained k-truss communities in a k-truss community.
@@ -182,20 +184,22 @@ Better
 \end{itemize}
 \end{frame}
 
+\subsection{Basic solution}
 \begin{frame}
+\frametitle{Basic solution}
 \begin{itemize}
 \item A k-truss community may contain a set of two-vertexes-pairs. Any pair of vertexes in the set, the distance of the two vertexes is larger than d.
 \item Observation: for each pair of vertexes, we only need to remove one of the vertex (different removal choices induce different combinations, which may lead to different results)
-\item Observation: For the set of pairs of vertexes, the processing order of pairs of vertexes does not affect the result but affects the performance
+\item Observation: For the set of pairs of vertexes, the processing order of pairs of vertexes does not affect the result but affects the performance (Problem)
 \item Observation: After dealing with all pairs of vertexes whose distances are larger than d, the residue of a k-truss community is subgraph of the k-truss community (connected or disconnected).
 K-truss communities in the residue are spatial constrained k-truss communities if they exist.
-\item \includegraphics[width=5cm]{subgraph.eps}
+\item \includegraphics[width=3cm]{subgraph.eps}
 \end{itemize}
 \end{frame}
 
 \subsection{Algorithm Example}
 \begin{frame}
-\frametitle{Algorithm Example}
+\frametitle{Basic solution}
 	\includegraphics[width=10cm]{re.eps}
 \end{frame}
 

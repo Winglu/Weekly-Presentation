@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.33pt}
+\beamer@sectionintoc {1}{$\sqrt {e}$}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Listing all triangles in a Graph}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Time Complexity}{4}{0}{1}
+\beamer@subsectionintoc {1}{3}{Truss Decomposition}{5}{0}{1}
+\beamer@subsectionintoc {1}{4}{Time Complexity}{6}{0}{1}

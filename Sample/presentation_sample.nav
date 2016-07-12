@@ -27,10 +27,11 @@
 \headcommand {\beamer@subsectionentry {0}{2}{2}{8}{Basic solution}}\headcommand {\beamer@subsectionpages {7}{7}}
 \headcommand {\slideentry {2}{2}{1}{8/8}{Basic solution}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\slideentry {2}{2}{2}{9/9}{Basic solution}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{9}{Basic solution}}\headcommand {\beamer@subsectionpages {8}{8}}
+\headcommand {\slideentry {2}{3}{1}{9/9}{Basic solution}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\beamer@subsectionentry {0}{2}{3}{10}{Algorithm Example}}\headcommand {\beamer@subsectionpages {8}{9}}
-\headcommand {\slideentry {2}{3}{1}{10/10}{Algorithm Example}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{4}{10}{Algorithm Example}}\headcommand {\beamer@subsectionpages {9}{9}}
+\headcommand {\slideentry {2}{4}{1}{10/10}{Algorithm Example}{0}}
 \headcommand {\beamer@framepages {10}{10}}
 \headcommand {\beamer@partpages {1}{10}}
 \headcommand {\beamer@subsectionpages {10}{10}}

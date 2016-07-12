@@ -7,4 +7,5 @@
 \beamer@sectionintoc {2}{Spatial Constraints}{7}{0}{2}
 \beamer@subsectionintoc {2}{1}{An example}{7}{0}{2}
 \beamer@subsectionintoc {2}{2}{Basic solution}{8}{0}{2}
-\beamer@subsectionintoc {2}{3}{Algorithm Example}{10}{0}{2}
+\beamer@subsectionintoc {2}{3}{Basic solution}{9}{0}{2}
+\beamer@subsectionintoc {2}{4}{Algorithm Example}{10}{0}{2}
