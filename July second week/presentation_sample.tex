@@ -1,0 +1,314 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+\usepackage[linesnumbered]{algorithm2e}
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{epstopdf}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[S.S.C]{Spatial Social Community} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Lu Chen} % Your name
+\institute[FSET] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Swinburne University of Technology \\ % Your institution for the title page
+\medskip
+\textit{luchen@swin.edu.au} % Your email address
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+\section{$\sqrt{e}$} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+%------------------------------------------------
+\subsection{Listing all triangles in a Graph} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+\begin{frame}
+\frametitle{Listing triangles}
+\begin{algorithm}[H]
+	\SetKwFunction{Tree}{Tree}
+	\SetKwProg{myalg}{Procedure}{}{}
+	\myalg{\Tree{}}{
+			Find a rooted spanning tree for each nontrivial connected component of G\;
+			If any tree edge is contained in a triangle the procedure terminates(Problem)\;
+			Delete the tree edges from G\;
+	}
+\end{algorithm}
+
+\begin{algorithm}[H]
+	\SetKwFunction{Triangle}{Triangle}
+	\SetKwProg{myalg}{Algorithm}{}{}
+	\myalg{\Triangle{}}{
+			Repeat Tree until all edges of G are deleted
+	}
+\end{algorithm}
+\end{frame}
+
+%------------------------------------------------
+
+\subsection{Time Complexity}
+\begin{frame}
+\frametitle{Time Complexity}
+\begin{itemize}
+\item Let $c$ denote the number of connected components. During the execution of Triangle, the value of $c$ increases ($c$=1 at the initialization ).
+\item If $c\le n- e^{\frac{1}{2}}$: each iteration of Tree causes the deletion of $n-c$; $n-c \ge n-(n- e^{\frac{1}{2}})= e^{\frac{1}{2}}$ edges; since there are total e edges in G, the Triangle may at most call $\frac{e}{e^{\frac{1}{2}}}$ times of Tree.
+
+\item If $c> n- e^{\frac{1}{2}}$: the degree of each vertex is at $n-c$; $n-c\le n- e^{\frac{1}{2}}=e^{\frac{1}{2}}$; since each iteration of Tree decreases the degree of each non-isolated vertex, there may be at most $e^{\frac{1}{2}}$ such iterations.
+\end{itemize}
+\end{frame}
+
+
+%------------------------------------------------
+\subsection{Truss Decomposition}
+\begin{frame}
+\frametitle{Truss Decomposition}
+\begin{algorithm}[H]
+	$k\leftarrow$2\;
+	compute sup(e) for each edge $e\in E_{G}$\;
+	sort all the edges in ascending order of their support\;
+	\While{$\exists$e such that $sup(e)\le (k-2)$}{
+		let $e=(u,v)$ be the edge with lowest support\;
+		assume, w.l.o.g., $deg(u)\le deg(v)$;
+		\For{each $w\in nb(u)$}{
+			\If{$(u,w)\in E_{G}$}{
+				decrease $sup((u,w))$ by 1\;
+				decrease $sup((v,w))$ by 1\;
+				reorder $(u,w)$ and $(v,w)$ according to their new support\;
+			}
+		}
+		$\tau(e) = sup(e)$\;
+		remove $e$ from $G$\;
+	} 
+	
+	\If{not all edges in $G$ are removed}{
+		increase $k$ by 1\;
+		repeat the while loop\;
+	}
+	
+\end{algorithm}
+\end{frame}
+
+%------------------------------------------------
+
+\subsection{Time Complexity}
+\begin{frame}
+\frametitle{Time Complexity}
+
+\begin{itemize}
+	\item Let $nb_{\ge u}(u)$ be the neighbors of u that have degrees no less than degree of u
+	\item Prove that for any $u\in V_{G}$, $|nb_{\ge}(u)|\le 2\sqrt{m}$
+	\item If $deg(u)\le \sqrt{m}$, then $|nb_{\ge}(u)|\le 2\sqrt{m}$
+	\item If  $deg(u)> \sqrt{m}$ and suppose $|nb_{\ge}(u)|> 2\sqrt{m}$, then $\sum_{u\in V_{G}} deg(u) > 2E$, which is impossible($\sum_{v\in nb_{\ge}(u)} \ge |nb_{ge}(u)|\times deg(u)$).
+
+\end{itemize}
+
+\end{frame}
+
+
+
+\subsection{Self Analysis}
+\frametitle{Self Analysis}
+\begin{frame}
+	\begin{algorithm}[H]
+		\KwIn{$G=(V,E)$}
+		\KwOut{$\tau(e)$ for $e\in E$}
+		
+		$k \leftarrow 2$\;
+		compute $sup(e)$ for each edge $e \in E$\;
+		sort all the edges in ascending order of their support\;
+		\While{$\exists e$ such that $sup(e)\le (k-2)$}{  \label{alg:td_go_to}
+				let $e = (u,v)$ be the edge with the lowest support\;
+				assume, w.o.l.g, $deg(u)\le deg(v)$\;
+				\For{ each $w\in N(u)$ and $(v,w)\in E$}{
+						$sup((u,w))\leftarrow sup((u,w))-1$\;
+						$sup((v,w))\leftarrow sup((v,w))-1$\;
+						reorder $(u,w)$ and $(v,w)$ according to their new support\;
+					}
+				$\tau(e)\leftarrow k$, remove $e$ from $G$\;
+			}
+		\If{not all edges in $G$ are removed}{
+				$k \leftarrow k+1$ \;
+				\textbf{goto} line~\ref{alg:td_go_to} \;
+			}
+		\Return $\{\tau(e)|e\in E\}$\;
+	\end{algorithm}
+\end{frame}
+
+
+\subsection{Sort edges according to their support rapiadly: datastructures}
+\begin{frame}
+	\textbf{Important datastructures}
+	\begin{itemize}
+		\item  an auxilary array $a[0...n_{a}]$, $n_{a}= Max(\{sup(e)|e\in E\})$
+		\item  a array $s[0,...,n_{s}]$, $n_{s}=|E|-1$, it stores all edge (reused by both input and sorted edges)
+		\item  a hashtable: given a edge, it returns its position in $s$ (this is for fast truss decompostion)
+	\end{itemize}
+\end{frame}
+
+
+\subsection{Sort algorithm}
+\begin{frame}
+	\scalebox{0.8}{
+	\begin{algorithm}[H]
+		\KwIn{$E$, $\{sup(e)|e\in E\}$ }
+		\KwOut{a permutation of $E$, in which edges are sorted by their support in ascending order}
+		
+		$n_{a}\leftarrow Max(\{sup(e)|e\in E\})$\;
+		\For{$i$ = $1$ to $n_{a}$}{
+			$a[i]\leftarrow 0$\;	
+		}
+		
+		\For{$e\in E$}{
+			$a[sup(e)]$++\;
+		}
+		
+		$l \leftarrow 0$\;
+		\For{$i$ = $1$ to $n_{a}$}{
+			$t \leftarrow a[i]$ ,$a[i] \leftarrow l$, $l\leftarrow l+t$\; 
+		}
+		let $s$ be a array with size of $|E|$\;
+		\For{$e\in E$}{
+			$s[a[sup(e)]]\leftarrow e$\;
+			$a[sup(e)]++$\;
+		}
+		\Return $s$\;
+	\end{algorithm}
+	} 
+\end{frame}
+
+
+\subsection{Truss Decomposition ALG with detailed datastructure}
+\begin{frame}
+	\scalebox{0.65}{
+	\begin{algorithm}[H]
+		\KwIn{$h$, $a$, $s$, $E$, $\{sup(e)|e\in E\}$}
+		\KwOut{$\{\tau(e)|e\in E \}$}
+		
+		$k\leftarrow 2$\;
+		\For{$i \leftarrow 0$ to $|E|-1$ }{
+			\If{$i > a[k-2]$}{
+				k++\;
+			}
+				let $e=(u,v)$ be $a[i]$\;
+				assume, w.l.o.g, $deg(u)\le deg(v)$\;
+				\For{each $w\in N(u)$ and $(v,w)\in E$}{
+					
+					$p = a[sup((u,w))-1]$
+					$e^{'}\leftarrow s[p+1]$\;
+					$s[p+1] \leftarrow (u,w)$\; 
+					$s[h((u,w))] \leftarrow e^{'}$\;  
+					$h(e^{'}) \leftarrow h((u,w))$\;
+					$h((u,w))\leftarrow p+1$\;
+					$a[sup((u,w))-1]++$\;
+					$sup((u,w))--$\;
+					
+					
+					$p=a[sup((v,w))-1]$\;
+					$e^{'}\leftarrow s[p+1]$\;
+					$s[p+1]\leftarrow (v,w)$\;
+					$s[h((v,w))]\leftarrow e^{'}$\;
+					$h(e^{'}) \leftarrow h((v,w))$\;
+					$h((v,w)) \leftarrow p+1$\;
+					$a[sup((v,w))-1]++$\;
+					$sup((v,w))--$\;
+					
+				}
+				$\tau(e)\leftarrow k$\;
+			
+		}
+		\Return $\{\tau(e)|e\in E\}$;
+	\end{algorithm}
+}
+\end{frame}
+
+\end{document} 
